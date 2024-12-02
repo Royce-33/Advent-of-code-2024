@@ -1,0 +1,1 @@
+This repo serves as a place where I have my own solutions to the Advent of Code 2024. I'm looking to teach myself Rust while solving these problems, so I don't know whether I will have solutions to all the problems or not.
