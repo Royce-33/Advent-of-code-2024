@@ -24,16 +24,11 @@ fn main() {
     vector1.sort();
     vector2.sort();
 
-    // loop through array to calculate total distance between arrays
-    let mut total_dist: i32 = 0;
-    for x in 0..vector1.len() {
-        let curr_element1: i32 = vector1[x];
-        let curr_element2: i32 = vector2[x];
+    // loop through vectors to calculate total distance between arrays - part 1
+    get_total_dist(&vector1, &vector2);
 
-        total_dist += ( curr_element1 - curr_element2 ).abs();
-    }
-
-    println!("Total dist between the two lists: {}", total_dist);
+    //loop through vectors again to calculate similarity score - part 2
+    get_similarity_score(&vector1, &vector2);
 }
 
 
@@ -62,4 +57,34 @@ fn read_input_file(file_name: &str) -> (Vec<i32>, Vec<i32>) {
 
     // implicitly returned
     (vector1, vector2)
+}
+
+fn get_total_dist( vector1: &Vec<i32>, vector2: &Vec<i32> ) {
+    let mut total_dist: i32 = 0;
+    
+    for x in 0..vector1.len() {
+        let curr_element1: i32 = vector1[x];
+        let curr_element2: i32 = vector2[x];
+
+        total_dist += ( curr_element1 - curr_element2 ).abs();
+    }
+
+    println!("Total dist between the two lists: {}", total_dist);
+}
+
+fn get_similarity_score( vector1: &Vec<i32>, vector2: &Vec<i32> ) {
+    let mut total_sim_score: i32 = 0;
+
+    for x in vector1 {
+        let mut num_occurences: i32 = 0;
+
+        for y in vector2 {
+            if  x == y  {
+                num_occurences += 1;
+            }
+        }
+        total_sim_score +=  x * num_occurences;
+    }
+
+    println!("Total similarity score between the two lists: {}", total_sim_score);
 }
