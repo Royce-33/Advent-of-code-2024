@@ -25,6 +25,15 @@ fn main() {
     vector2.sort();
 
     // loop through array to calculate total distance between arrays
+    let mut total_dist: i32 = 0;
+    for x in 0..vector1.len() {
+        let curr_element1: i32 = vector1[x];
+        let curr_element2: i32 = vector2[x];
+
+        total_dist += ( curr_element1 - curr_element2 ).abs();
+    }
+
+    println!("Total dist between the two lists: {}", total_dist);
 }
 
 
